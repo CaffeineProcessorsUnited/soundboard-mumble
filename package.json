@@ -1,0 +1,11 @@
+{
+  "name": "soundboard-mumble",
+  "version": "1.0.0",
+  "description": "Mumble client to play audio from soundboard server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felix Richter",
+  "license": "ISC"
+}
