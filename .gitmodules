@@ -1,0 +1,3 @@
+[submodule "soundboard-lib"]
+	path = soundboard-lib
+	url = git@github.com:CaffeineProcessorsUnited/soundboard-lib.git

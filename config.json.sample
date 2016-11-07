@@ -1,0 +1,14 @@
+{
+  "mumble-server": {
+    "hostname": "mygamehub.de"
+  },
+  "mumble-client": {
+    "key" : "",
+    "cert": ""
+  },
+  "soundboard-server" :{
+    "hostname": "localhost",
+    "socket-port": 8080,
+    "stream-port": 7777
+  }
+}
