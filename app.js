@@ -10,7 +10,13 @@ cpu.loadModule(require("./soundboard-lib/events.cpu.js"));
 cpu.loadModule(require("./soundboard-lib/socket.cpu.js"), { "io" : io, "server": false });
 cpu.loadModule(require("./soundboard-lib/config.cpu.js"));
 
-console.log(cpu);
+var cparse = require("./cparser.js")(cpu);
+var commands = require("./commands.js");
+for (var command in commands) {
+  if (commands.hasOwnProperty(command) && typeof(commands[command]) == "function" ) {
+    cparse.addParser(command, commands[command]);
+  }
+}
 //Configure CPU
 cpu.module("events").addEventListener("ready", function(cpu) {
   cpu.module("config").load(JSON.parse(fs.readFileSync('config.json', 'utf8')));
@@ -50,6 +56,9 @@ if (hostname != null && hostname != "") {
       });
       connection.on("message", function(message, user, scope){
         cpu.module("util").log("Mumble: message \"" + message + "\"");
+        cparse.parse(message, function(response) {
+          user.sendMessage(response);
+        });
       });
   });
 } else {
